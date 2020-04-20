@@ -1,29 +1,22 @@
-const http = require("http");
-const filesystem = require("fs");
+import path from "path";
+import express from "express";
 
-http
-  .createServer((request, response) => {
-    const { url } = request;
-    if (url == "/") {
-      response.writeHead(200, { "Content-Type": "text/html" });
-      const cv = filesystem.readFileSync("cv.html");
-      response.end(cv);
-    }
-    if (url == "/") {
-      response.writeHead(200, { "Content-Type": "text/css" });
-      const cvcss = filesystem.readFileSync("cv.css");
-      response.end(cvcss);
-    } else if (url == "/jobs") {
-      response.writeHead(200, { "Content-Type": "text/html" });
-      const jobs = filesystem.readFileSync("jobs.html");
-      response.end(jobs);
-    } else if (url == "/hobbies") {
-      response.writeHead(200, { "Content-Type": "text/html" });
-      const hobbies = filesystem.readFileSync("hobbies.html");
-      response.end(hobbies);
-    } else {
-      response.writeHead(404, { "Content-Type": "text/plain" });
-      response.end("Page does not exist.");
-    }
-  })
-  .listen(8080);
+const server = express();
+
+server.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "cv.html"));
+});
+
+server.get("/cv.css", (req, res) => {
+  res.sendFile(path.join(__dirname, "cv.css"));
+});
+
+server.get("/jobs", (req, res) => {
+  res.sendFile(path.join(__dirname, "jobs.html"));
+});
+
+server.get("/hobbies", (req, res) => {
+  res.sendFile(path.join(__dirname, "hobbies.html"));
+});
+
+server.listen(8080);
