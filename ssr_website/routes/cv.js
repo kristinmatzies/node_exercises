@@ -1,5 +1,5 @@
 import path from "path";
 
-module.exports = (reg, res) => {
+export default (reg, res) => {
   res.sendFile(path.join(__dirname, "cv.json"));
 };

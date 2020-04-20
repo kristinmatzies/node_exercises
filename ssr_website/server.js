@@ -1,9 +1,8 @@
 import path from "path";
 import express from "express";
-
-const cvController = require("./routes/cv");
-const jobsController = require("./routes/jobs");
-const hobbiesController = require("./routes/hobbies");
+import cvController from "./routes/cv"; // hier nimmt er automatisch die .js-Datei
+import jobsController from "./routes/jobs"; // hier nimmt er automatisch die .js-Datei
+import hobbiesController from "./routes/hobbies"; // hier nimmt er automatisch die .js-Datei
 
 const server = express();
 
