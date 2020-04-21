@@ -6,9 +6,12 @@ import hobbiesController from "./routes/hobbies";
 import contactForm from "./routes/contact";
 import styles from "./routes/styles";
 import saveController from "./routes/contact-save";
+import productRoutes from "./product"
 
 const server = express();
 server.use(bodyParser.urlencoded({extended: true}));
+
+server.use("/api-db", productRoutes)
 
 server.get("/", cvController);
 
