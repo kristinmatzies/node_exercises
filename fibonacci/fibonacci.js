@@ -3,7 +3,7 @@ const fibonacci = require("./fibonacci_functions");
 
 const requestListener = function (req, res) {
   res.writeHead(200);
-  const result = fibonacci(16);
+  const result = fibonacci(12);
   res.end(JSON.stringify(result));
 };
 

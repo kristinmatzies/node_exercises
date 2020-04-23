@@ -1,4 +1,7 @@
 module.exports = function fibonacci(n) {
+  if (typeof n !== "number") {
+    return n;
+  }
   if (n < 2) {
     return n;
   } else {
